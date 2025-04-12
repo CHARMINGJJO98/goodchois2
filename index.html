@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>複雑で精巧な自己紹介サイト</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ヒーローバナー：パララックス効果付き -->
+  <header class="hero">
+    <div class="hero-overlay">
+      <h1>私のヨコク</h1>
+      <p>協力者が次々と生まれる環境を届ける</p>
+    </div>
+  </header>
+
+  <!-- 固定ナビゲーション（セクションへのスムーズスクロール用） -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="#section-profile">自己紹介</a></li>
+      <li><a href="#section-activity">活動内容</a></li>
+      <li><a href="#section-vision">ビジョン</a></li>
+      <li><a href="#section-additional">その他</a></li>
+    </ul>
+  </nav>
+
+  <!-- 右肩上がりの矢印エリア（背景に矢印画像） -->
+  <section class="arrow-container">
+    <!-- 矢印画像を背景に指定（style.cssで設定） -->
+    <!-- マーカーは絶対配置し、各セクションに対応 -->
+    <div class="marker" id="marker-profile" onclick="openModal('modal-profile')" style="left: 12%; top: 68%;">自己紹介</div>
+    <div class="marker" id="marker-activity" onclick="openModal('modal-activity')" style="left: 38%; top: 50%;">活動内容</div>
+    <div class="marker" id="marker-vision" onclick="openModal('modal-vision')" style="left: 64%; top: 32%;">ビジョン</div>
+    <div class="marker" id="marker-additional" onclick="openModal('modal-additional')" style="left: 90%; top: 14%;">その他</div>
+  </section>
+
+  <!-- 各セクション（アンカー対象としても利用） -->
+  <main>
+    <!-- セクション：自己紹介 -->
+    <section id="section-profile" class="content-section">
+      <h2>自己紹介（ヨコク）</h2>
+      <p>ここにはPDFから抽出した自己紹介テキストの詳細情報などを配置できます。背景やレイアウトにもこだわり、フォントやカラーもPDFのデザインエッセンスを反映。</p>
+      <img src="images/profile.jpg" alt="プロフィール画像">
+      <p>私の名前はチェ・ミョンジョです。立命館大学で経営学を学びながら、多くの人との出会いから、共に夢を実現する社会を作りたいと考えています。</p>
+    </section>
+    
+    <!-- セクション：活動内容 -->
+    <section id="section-activity" class="content-section">
+      <h2>活動内容</h2>
+      <p>ここには国際交流活動、学生自治会、写真サークルなどの詳細な内容を盛り込みます。PDFのデザインに合わせて、テキストと写真の配置にこだわります。</p>
+      <img src="images/activity.jpg" alt="活動内容の画像">
+      <p>各活動での実績やエピソードも交え、視覚的なレイアウトで情報を整理して表示します。</p>
+    </section>
+    
+    <!-- セクション：ビジョン -->
+    <section id="section-vision" class="content-section">
+      <h2>ビジョン</h2>
+      <p>「全員優勝社会」の実現を目指す私のビジョンを、力強いキャッチコピーとともにご紹介します。PDFのグラデーションやテキストエフェクトも参考に。</p>
+      <img src="images/vision.jpg" alt="ビジョンの画像">
+      <p>人と人とのつながりを強化するプラットフォームの構築を通じ、誰もが夢を追い続けられる社会を実現するために日々努力しています。</p>
+    </section>
+    
+    <!-- セクション：その他の情報 -->
+    <section id="section-additional" class="content-section">
+      <h2>その他の情報</h2>
+      <p>その他、PDFで示されたキャッチコピーや補足情報、装飾エレメントなどを余すところなく掲載します。</p>
+      <p>協力者が現れることで可能性は一気に広がり、TEAMの力によって全員が優勝できる社会が実現されます。</p>
+    </section>
+  </main>
+
+  <!-- モーダルウィンドウ：各マーカーから詳細表示用 -->
+  <!-- モーダル：自己紹介 -->
+  <div id="modal-profile" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal-profile')">&times;</span>
+      <h2>自己紹介（ヨコク）</h2>
+      <img src="images/profile.jpg" alt="プロフィール画像">
+      <p>私の名前はチェ・ミョンジョです。詳細な自己紹介や経歴、想いをこちらに記載しています。PDFのレイアウトを参考に、文字装飾や背景色にもこだわっています。</p>
+    </div>
+  </div>
+
+  <!-- モーダル：活動内容 -->
+  <div id="modal-activity" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal-activity')">&times;</span>
+      <h2>活動内容</h2>
+      <img src="images/activity.jpg" alt="活動内容の画像">
+      <p>国際交流活動、学生自治会、写真サークルの各活動について、実績や具体的なエピソードを詳しくご紹介しています。</p>
+    </div>
+  </div>
+
+  <!-- モーダル：ビジョン -->
+  <div id="modal-vision" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal-vision')">&times;</span>
+      <h2>ビジョン</h2>
+      <img src="images/vision.jpg" alt="ビジョンの画像">
+      <p>「全員優勝社会」の実現を目指す私のビジョン。人と人とのつながり、チームの力、そして夢を追い続ける情熱について、詳細なストーリーを掲載しています。</p>
+    </div>
+  </div>
+
+  <!-- モーダル：その他 -->
+  <div id="modal-additional" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal-additional')">&times;</span>
+      <h2>その他の情報</h2>
+      <p>PDFにあるその他のキャッチコピーや装飾エレメント、補足情報をこちらで確認できます。各要素が一目で理解できるよう、レイアウトにもこだわりました。</p>
+    </div>
+  </div>
+
+  <!-- フッター -->
+  <footer>
+    <p>© 2025 My Self-Introduction Page | <a href="https://github.com/yourusername/repository" target="_blank">GitHub Repository</a></p>
+  </footer>
+  
+  <script src="script.js"></script>
+</body>
+</html>
