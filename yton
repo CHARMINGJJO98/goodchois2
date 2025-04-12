@@ -1,0 +1,37 @@
+import os
+import fitz  # PyMuPDF
+
+# 保存先のディレクトリを設定
+images_dir = "images"
+if not os.path.exists(images_dir):
+    os.makedirs(images_dir)
+    print(f"'{images_dir}' フォルダを作成しました。")
+else:
+    print(f"'{images_dir}' フォルダは既に存在します。")
+
+# PDFファイルを開く
+pdf_path = "自己紹介シート.pdf"  # PDFファイルの名前
+doc = fitz.open(pdf_path)
+print(f"PDFファイル '{pdf_path}' を読み込みました。")
+
+image_count = 0
+
+# PDF内の各ページから画像を抽出する
+for page_index in range(len(doc)):
+    page = doc[page_index]
+    image_list = page.get_images(full=True)
+    print(f"ページ {page_index + 1} には {len(image_list)} 個の画像が見つかりました。")
+    
+    for img_index, img in enumerate(image_list):
+        xref = img[0]
+        base_image = doc.extract_image(xref)
+        image_bytes = base_image["image"]
+        image_ext = base_image["ext"]
+        # 画像ファイル名の作成例：ページ番号_画像番号.拡張子
+        image_filename = os.path.join(images_dir, f"page{page_index + 1}_img{img_index + 1}.{image_ext}")
+        with open(image_filename, "wb") as image_file:
+            image_file.write(image_bytes)
+        print(f"画像を保存しました: {image_filename}")
+        image_count += 1
+
+print(f"合計 {image_count} 枚の画像を抽出しました。")
